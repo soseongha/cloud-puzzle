@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/konva@8.3.14/konva.min.js"></script>
+        <meta charset="utf-8" />
+        <title>구름 퍼즐</title>
+        <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script>
+
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+
+        //stage 정의하기
+        var stage = new Konva.Stage({
+            container: 'container',
+            width: width,
+            height: height,
+        });
+
+        var layers = new Array(10);
+        var imageObjs = new Array(10);
+
+       
+        for(var i = 0; i < 10; i++){
+
+             //layer 정의하기
+            layers[i] = new Konva.Layer();
+            stage.add(layers[i]);
+        
+            //이미지 오브젝트 만들기(draggable로 해서 DnD가 가능하게!)
+            imageObjs[i] = new Image();
+        
+        }
+
+        //이미지 오브젝트 만들기(draggable로 해서 DnD가 가능하게!)
+        // 레이어에 이미지 오브젝트 넣기
+        imageObjs[0].onload = function () {
+        var piece_0 = new Konva.Image({
+            x: 50,
+            y: 50,
+            image: imageObjs[0],
+            width: 200,
+            height: 200,
+            draggable: true,
+        });
+        layers[0].add(piece_0);
+        };
+
+        imageObjs[1].onload = function () {
+        var piece_1 = new Konva.Image({
+            x: 50,
+            y: 50,
+            image: imageObjs[1],
+            width: 200,
+            height: 200,
+            draggable: true,
+        });
+        layers[1].add(piece_1);
+        };
+
+        imageObjs[2].onload = function () {
+        var piece_2 = new Konva.Image({
+            x: 50,
+            y: 50,
+            image: imageObjs[2],
+            width: 200,
+            height: 200,
+            draggable: true,
+        });
+        layers[2].add(piece_2);
+        };
+        imageObjs[3].onload = function () {
+        var piece_3 = new Konva.Image({
+            x: 50,
+            y: 50,
+            image: imageObjs[3],
+            width: 200,
+            height: 200,
+            draggable: true,
+        });
+        layers[3].add(piece_3);
+        };
+        imageObjs[4].onload = function () {
+        var piece_4 = new Konva.Image({
+            x: 50,
+            y: 50,
+            image: imageObjs[4],
+            width: 200,
+            height: 200,
+            draggable: true,
+        });
+        layers[4].add(piece_4);
+        };
+        imageObjs[5].onload = function () {
+        var piece_5 = new Konva.Image({
+            x: 50,
+            y: 50,
+            image: imageObjs[5],
+            width: 200,
+            height: 200,
+            draggable: true,
+        });
+        layers[5].add(piece_5);
+        };
+        imageObjs[6].onload = function () {
+        var piece_6 = new Konva.Image({
+            x: 50,
+            y: 50,
+            image: imageObjs[6],
+            width: 200,
+            height: 200,
+            draggable: true,
+        });
+        layers[6].add(piece_6);
+        };
+        imageObjs[7].onload = function () {
+        var piece_7 = new Konva.Image({
+            x: 50,
+            y: 50,
+            image: imageObjs[7],
+            width: 200,
+            height: 200,
+            draggable: true,
+        });
+        layers[7].add(piece_7);
+        };
+        imageObjs[8].onload = function () {
+        var piece_8 = new Konva.Image({
+            x: 50,
+            y: 50,
+            image: imageObjs[8],
+            width: 200,
+            height: 200,
+            draggable: true,
+        });
+        layers[8].add(piece_8);
+        };
+        imageObjs[9].onload = function () {
+        var piece_9 = new Konva.Image({
+            x: 50,
+            y: 50,
+            image: imageObjs[9],
+            width: 200,
+            height: 200,
+            draggable: true,
+        });
+        layers[9].add(piece_9);
+        };
+
+
+        for(var i = 0; i < 10; i++){
+
+            //이미지에 소스 넣기
+            var imageName = 'piece (' + ((i+1).toString()) + ').png';
+            imageObjs[i].src = imageName;
+
+            // 커서 이벤트 추가
+            layers[i].on('mouseover', function () {
+            document.body.style.cursor = 'pointer';
+            });
+            layers[i].on('mouseout', function () {
+            document.body.style.cursor = 'default';
+            });
+        }
+       
+
+
+
+        
+        </script>
+        <i onclick="closeWidget()" class="fa-solid fa-xmark"></i>
+        <script type="text/javascript">
+            // x 버튼을 누르면 호출되는 함수
+            function closeWidget() {
+                // App으로 메시지를 보냄.
+                window.parent.postMessage(
+                    {
+                        type: "close",
+                    },
+                    "*"
+                );
+            }
+        </script>
+
+        
+    </body>
+</html>
